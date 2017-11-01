@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div id="albm_photo" style="width:200px;height:200px;background:#006;">
+	<a href="#" onmousedown="showOption(\'profile_form\')" 
+	onclick="return false">Add new photos</a>
+	<form id="profile_form" enctype="multipart/form-data" action="Parser/photo_system.php" method="post" onSubmit="return false">
+	<h4>Upload your photos</h4>
+	<input type="file" name="profile" id="profile" required multiple>
+	<input type="submit" name="post">
+	<img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
+  
+	</form>
+	</div>
+	
+</body>
+</html>

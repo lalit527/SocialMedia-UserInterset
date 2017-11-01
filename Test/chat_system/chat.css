@@ -1,0 +1,51 @@
+body
+{
+font-family: Tahoma, Helvetica, sans-serif;
+margin: 1px;
+font-size: 12px;
+}
+#content
+{
+border: DarkGreen 1px solid;
+margin-bottom: 0px;
+margin-left:0px;
+}
+input
+{
+border: #999 1px solid;
+font-size: 10px
+}
+#scroll
+{
+	position: relative;
+	height: 300px;
+	width: 200px;
+	overflow-y:auto;
+	overflow-x : auto;
+	
+	margin-right: 0px;
+	color: #D6D6D6;
+}
+.item
+{
+margin-bottom: 6px
+}
+#colorpicker
+{
+text-align:center
+}
+#total {
+	
+}
+#messageBox {
+	display:inline ;
+height:2em;
+width:205px;
+font-size:15px
+	
+}
+#chat_header{
+     height:30px;
+	 width:208px;
+	 background:blue;	
+}

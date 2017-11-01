@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+#pageTop > #getIn {
+	display:none;
+}
+
+#pageTop > #getExisting {
+	display:block;
+}
+#pageMiddle_signup {
+	height:#ccc 800px;
+	border:2px solid;
+}
+
+#terms {
+	border:#CCC 1px solid;
+	background: #F5F5F5;
+	padding: 12px;
+	
+}
+#status {
+     border:#CCC 1px solid; 
+     backgroung: #f5f5f5;
+	 padding:12px;
+	 	
+}
+#usrnm{
+border:1px solid #6685ab;
+padding:5px 10px;
+background:#ffffff;
+width:298px;
+border-radius:5px;
+}
+#usrnm{letter-spacing:1.5px;}
+#lbl{
+	font-weight:bold;
+	color:#ff0000;
+}

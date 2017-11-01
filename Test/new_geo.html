@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Reverse Geocoding</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+var geocoder;
+var map;
+var infowindow = new google.maps.InfoWindow();
+var marker;
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.watchPosition(showPosition);
+    }
+  else{x.innerHTML="Geolocation is not supported by this browser.";}
+  }
+function showPosition(position)
+  {
+	  
+  document.getElementById('latlng').value = ""+position.coords.latitude + 
+  ","+position.coords.longitude;
+    initialize();
+  	//codeLatLng();
+  }
+
+function initialize() {
+  geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(22.4650201,88.37931929999999);
+  var mapOptions = {
+    zoom: 6,
+    center: latlng,
+    mapTypeId: 'roadmap'
+  }
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  codeLatLng();
+}
+
+function codeLatLng() {
+  	
+  var input = document.getElementById('latlng').value;
+  var latlngStr = input.split(',', 2);
+  var lat = parseFloat(latlngStr[0]);
+  var lng = parseFloat(latlngStr[1]);
+  var latlng = new google.maps.LatLng(lat, lng);
+  geocoder.geocode({'latLng': latlng}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      if (results[1]) {
+		  //infowindow.setContent(results[1].formatted_address);
+	  
+        map.setZoom(07);
+        marker = new google.maps.Marker({
+            position: latlng,
+            map: map
+        });
+		document.getElementById("result").value = results[1].formatted_address;
+        infowindow.setContent(results[1].formatted_address);
+        infowindow.open(map, marker);
+      } else {
+        alert('No results found');
+      }
+    } else {
+      alert('Geocoder failed due to: ' + status);
+    }
+  });
+}
+
+//google.maps.event.addDomListener(window, 'load', initialize);
+ //  initialize();
+
+    </script>
+    <style>
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        width: 350px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+      #latlng,#result {
+        width: 225px;
+      }
+    </style>
+  </head>
+  <body onload="getLocation()">
+    <div id="panel">
+      <input id="latlng" type="text" value="">
+      <input id="result" type="text" value="" >
+     
+      <input type="button" value="Reverse Geocode" onclick="">
+    </div>
+    <div id="map-canvas" style="width:500px;height:500px"></div>
+  </body>
+</html> 

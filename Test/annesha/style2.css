@@ -1,0 +1,169 @@
+<?php
+include_once('Connection/check_logged_user.php');
+?>
+<?php
+include_once ("Connection/check_logged_user.php");
+include_once ("TimeStamp/time_ago.php");
+$timeAgoObject = new convertToAgo;
+
+$u = "";
+$f_name = "";
+$l_name = "";
+$sex = "Female";
+$profile_pic = "";
+$profile_pic_btn = "";
+$profile_form = "";
+$userlevel = "";
+$joindate = "";
+$lastseen = "";
+$lastseenfrom = "";
+$dplink = "";
+$cplink = "";
+$lastsession = "";
+$isOwner = "no";
+$account_setting = "";
+$logout = "";
+$post = "";
+$notification = "";
+$convertedTime_lastseen = "";
+$when_lastseen = "";
+$message_btn = "";
+$status_ui = "";
+$cover_pic = "";
+   $u = $log_username;
+   
+
+
+$sql = "SELECT * FROM users WHERE username='$log_username' AND activated='1' LIMIT 1";
+
+$user_query = mysqli_query($con,$sql);
+
+$numuser = mysqli_num_rows($user_query);
+
+if($numuser < 1){
+	
+	echo "This user is not yet activated";
+	exit();
+}
+
+
+while ($row = mysqli_fetch_array($user_query,MYSQLI_ASSOC)) {
+	
+	$profile_id = $row['id'];
+	$f_name = $row['firstname'];
+	$l_name = $row['lastname'];
+	$gender = $row['gender'];
+	$dplink = $row['dplink'];
+	$cplink = $row['cplink'];
+	$signup = $row['signup'];
+	$userlevel = $row['userlevel'];
+	$lastseen = $row['lastlogin'];
+	$lastseenfrom = $row['lastloginfrom'];
+	$userlevel = $row['userlevel'];
+	$joindate =strftime("%b %d, %Y", strtotime($signup));
+	$lastsession = strftime("%b %d, %Y", strtotime($lastseen));
+	if($gender == 'm') {
+	   $sex = "Male";	
+	   
+	}
+	$convertedTime_lastseen = ($timeAgoObject -> convert_dateTime($lastseen));
+	$when_lastseen = ($timeAgoObject -> makeAgo($convertedTime_lastseen));
+$cover_pic = '<div id="cp_preview"><img src="Users/'.$log_username.'/'.$cplink.'" alt="'.$u.'" id="preview_cp" height="200px" width="220px" style="border-radius:10px;opacity:0.8;
+filter:alpha(opacity=80);"></div>';
+
+
+$profile_pic = '<div id="pic_preview"><img src="Users/'.$log_username.'/'.$dplink.'" alt="'.$u.'" id="preview_dp" height="70px" width="50px" style="border-radius:3px;"><div id="name">'.$f_name.' '.$l_name.'<div><div>@'.$log_username.'</div><a href="">Edit</a></div></div></div>';
+
+$pf_pic = '<div id="stng_pic"><img src="Users/'.$log_username.'/'.$dplink.'"  id="dp_stng" height="40px" width="40px"><div id="name_stng">'.$f_name.' '.$l_name.'  @'.$log_username.'</div></div>';
+
+if($profile_pic == ""){
+	$profile_pic = '<div id="pic_preview"><img src="Images/dp_male1.jpg" alt="'.$u.'" id="preview_dp" height="70px" width="50px"><div id="name">'.$f_name.''.$l_name.'<div><div>'.$log_username.'</div></div></div></div>';
+}
+}
+$status_ui = '<div id="post_div">';
+	$status_ui .= '<p>Status</p>';
+	$status_ui .= '<span id="status_span" style="float:right;"></span><hr />';
+	$status_ui .= '<textarea id="text_post" rows="5"
+	 cols="60" onkeyup="statusMax(this,250)" placeholder="What&#39;s new with you '.$u.'?"></textarea><hr />';
+	$status_ui .= '<button id="post" onclick="postToStatus(\'status_post\',\'a\',\''.$u.'\',\'text_post\')">Post</button>';
+	$status_ui .= '<p>fffffff</p>';
+	$status_ui .= '</div>';
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link rel="stylesheet" type="text/css" href="Test/annesha/style.css" />
+
+
+<style>
+body{
+	margin:0;
+	padding:0;
+}
+#status_show_div{
+	width:600px;
+	position:absolute;
+	top:20%;
+	left:30%;
+	border:thin solid #CCC;
+	border-radius:10px;
+	
+}
+#upper_status_show{
+	height:200px;
+	padding-left:30px;
+	padding-right:30px;
+	padding-top:20px;
+}
+#people_status{
+	height:50px;
+	background-color:#666;
+	padding-left:30px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+#date_status{
+	height:50px;
+	background-color:#003;
+    padding-left:30px;
+	padding-top:5px;
+	padding-bottom:5px;
+
+}
+#reply_status_show{
+	height:70px;
+	background-color:#093;
+    padding-left:30px;
+	padding-right:30px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+#replies{
+	background-color:#9F6;
+	
+}
+
+</style>
+</head>
+
+<body>
+<div id="status_show_div">
+   <div id="status_show_upper">
+        <div id="upper_status_show">
+            kkkkkkkkkkkkkkkkkkkk
+        </div><hr />
+            <div id="people_status">gggggggggggggggggg</div>
+            <div id="date_status">ssssssssssssssssssss</div>
+            <div id="reply_status_show">lllllllllllllllll</div>
+            
+   </div>
+   <div id="replies"></div>
+   </div>
+ 
+</div>
+
+</body>
+</html>

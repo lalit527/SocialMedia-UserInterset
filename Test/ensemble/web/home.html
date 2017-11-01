@@ -1,0 +1,425 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            &eacute;nsembl&eacute;
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript"> 
+    /*$(document).ready(function()
+    {
+        $("show").animate({ left: "50%" });
+    });*/
+</script>
+        <style>
+		     body{
+				margin:0px;
+				padding:0px;
+				 
+			 }
+            #head{
+                height: 60px;
+                background-color: #FFb842;
+                padding-top: 0px;
+            }
+            #meicon,#alerticon,#msgicon,#homeicon
+            {
+                height: 30px;
+                width: 30px;
+                padding-top: 15px;
+                padding-bottom: 1px;
+                padding-left: 10px;
+                padding-right: 10px;
+                
+            }
+            #logicon,#settingsicon
+            {
+                height: 30px;
+                width: 30px;
+               /* padding-top: 6px;
+                padding-bottom: 4px;
+                padding-left: 5px;
+                padding-right: 5px;*/
+                margin-top:10px;
+                
+            }
+            
+            #frndicon{
+                /*height: 35px;
+                width: 40px;
+                padding-top: 15px;
+                padding-bottom: 1px;
+                padding-left: 10px;
+                padding-right: 10px;*/
+                height: 30px;
+                width: 40px;
+                padding-top: 15px;
+                padding-bottom: 1px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            #newsicon,#msg1icon,#browseicon,#eventicon,#photoicon,#groupicon
+            {
+                height: 17px;
+                width: 17px;
+                padding-top: 7px;
+                padding-bottom: 1px;
+                padding-left: 2px;
+                padding-right: 3px;
+                
+            }
+            #left ul li{
+                list-style-type: none;
+            }
+            #show ul li{
+                list-style-type: none;
+            }
+            #right ul li
+            {
+              list-style-type: none;
+              display: inline;
+              float: right;
+            }
+            #left ul li{
+                float: left;
+            }
+            #left li img {
+/* -webkit-box-reflect: below 15px
+		    -webkit-gradient(linear, left top, left bottom, from(transparent),
+		    color-stop(0.7, transparent), to(rgba(255,255,255,.5))); /* reflection is supported by webkit only */
+  -webkit-transition: all 0.3s;
+  -webkit-transform-origin: 50% 100%;
+}
+/*#settingsicon
+{
+   -webkit-transition: all 0.3s;
+  -webkit-transform-origin: 50% 100%; 
+}*/
+#left li:hover img { 
+  -webkit-transform: scale(2);
+  margin: 1em 1em;
+  overflow: hidden;
+  cursor: pointer;
+}
+#left li:hover + li img,
+#left li.prev img {
+  -webkit-transform: scale(1.5);
+  margin: 0 1.5em;
+  
+}
+/*#search :hover #settingsicon
+{
+  -webkit-transform: scale(1);
+  margin: 1em 1em;
+  overflow: hidden;
+}*/
+#srch{
+		margin-left: 150px;
+		padding-top: 6px;
+                padding-bottom: 4px;
+                padding-right: 80px;
+                padding-left: 4px;
+                margin-right: 0px;
+                margin-top:17px;
+                margin-bottom: 40px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		color:#666;
+		border:1px solid #6685ab; border-right:0px;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+	}
+	#srchicon {
+		margin-left: -5px;
+		padding-top: 2px;
+                padding-bottom: 2px;
+                padding-left: 0px;
+                padding-right: 20px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:18px;
+		font-weight:bold;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #0076a3; border-right:0px;
+		background: #0095cd;
+		background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+		background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	#srchicon:hover {
+		text-decoration: none;
+		background: #007ead;
+		background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+		background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+	}
+	/* Fixes submit button height problem in Firefox */
+	#srchicon::-moz-focus-inner {
+	  border: 0;
+	}
+	#list #show
+        {
+            margin-top: 30px;
+            width: 200px;
+            border-style: solid;
+            border-color: #FFb842;
+            border-width: 3px;
+            
+            height: auto;
+            background-color: #6685ab;
+            display: none;
+        }
+        #list{
+            width: 200px;
+        }
+        #arrow
+        {
+            width: 60px;
+            height: 80px;
+            float: left;
+        }
+        #list:hover #show
+        {
+          display:block;  
+        }
+        #list:hover #arrow
+        {
+          display: none;  
+        }
+        #list
+        {
+            display: inline;
+        }
+        #newsdiv, #msgdiv,#eventdiv,#photodiv,#browsediv,#grpdiv
+        {
+            
+            padding-bottom: 5px;
+            padding-top: 5px;
+            padding-right: 2px;
+            padding-left: 2px;
+            font-size: 15px;
+            font-family: Segoe script;
+            color: white;
+           
+        }
+       #msgdiv:hover 
+        {
+            
+            background: linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -moz-linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -webkit-linear-gradient(top, #ffffff 0%, #00adee 100%);
+                cursor: pointer;
+        }
+        #newsdiv:hover
+        {
+             background: linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -moz-linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -webkit-linear-gradient(top, #ffffff 0%, #00adee 100%);
+                cursor: pointer;
+        }
+        #eventdiv:hover 
+        {
+            background: linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -moz-linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -webkit-linear-gradient(top, #ffffff 0%, #00adee 100%);
+                cursor: pointer;
+        }
+        #browsediv:hover 
+        {
+             background: linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -moz-linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -webkit-linear-gradient(top, #ffffff 0%, #00adee 100%);
+                cursor: pointer;
+        }
+        #photodiv:hover 
+        {
+             background: linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -moz-linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -webkit-linear-gradient(top, #ffffff 0%, #00adee 100%);
+                cursor: pointer;
+        }
+        #grpdiv:hover 
+        {
+             background: linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -moz-linear-gradient(top, #ffffff 0%, #00adee 100%);
+		background: -webkit-linear-gradient(top, #ffffff 0%, #00adee 100%);
+                cursor: pointer;
+        }
+        #pic
+        {
+            margin-top: 20px;
+            height: 200px;
+            width: 200px;
+        }
+        #list{
+            float:left;
+            
+        }
+        #broadcast{
+            margin-left: 120px;
+            float:left;
+            
+        }
+        #status
+        {
+            float:right;
+            margin-right: 50px;
+            margin-top: 100px;
+        }
+        #status_txt
+        {
+            width: 300px;
+            height: 150px;
+            background: -moz-linear-gradient(center top , #FFFFFF,  #EEEEEE 1px, #FFFFFF 20px);    
+    background: -webkit-gradient(linear, left top, left 20, from(#FFFFFF), color-stop(5%, #EEEEEE) to(#FFFFFF));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FBFBFB', endColorstr='#FFFFFF');
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 8px;
+    -moz-box-shadow: 0 0 2px #DDDDDD;
+    -webkit-box-shadow: 0 0 2px #DDDDDD;
+    box-shadow: 0 0 2px #DDDDDD;
+    font-size: 15px;
+    font-weight: bold;
+    color: dimgrey;
+    
+            
+        }
+		#status_txt
+		{
+		top: 300px;
+	    left: 700px;
+		}
+        #status_txt:focus
+        {
+            border-color: #00adee;
+            border-style: solid inset;
+            border-width: 3px;
+            box-shadow:0 0 2px #FFFE00;
+			
+            
+            
+        }
+        </style>
+    </head>
+    <body>
+        
+        <div id="head">
+            <div id="left">
+              <ul>
+                        <li> 
+                            <img src="me.jpg" id="meicon"> 
+                        </li>
+                        <li>                            
+                             <img src="home1.jpg" id="homeicon"> 
+                             
+                        </li>
+                        <li> 
+                           
+                           <img src="alert2.jpg" id="alerticon"> 
+                        </li>
+                        <li> 
+                           
+                           <img src="msg.png" id="msgicon"> 
+                        </li>
+                        <li> 
+                           
+                           <img src="frnd.jpg" id="frndicon"> 
+                        </li>
+              </ul>
+            </div>
+            <div id="search">
+		<form id="searchbar" method="get" action="">
+		        <input type="text" id="srch"  name="searching" size="50" maxlength="120" value="Search for people by name, email or phone number">
+                        <input type="submit" value="    >" id="srchicon">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="set1.png" id="settingsicon">
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                        
+                             <img src="log1.png" id="logicon"> 
+                             
+                        
+                        
+             
+		</form>
+                
+		</div>
+	
+       
+        
+             </div>
+        <div id ="container">
+        <div id="list">
+            <div id="show">
+               
+          <ul>
+                        <li> 
+                            <div id="newsdiv">
+                            <img src="news1.png" id="newsicon"> 
+                            &nbsp;&nbsp;Broadcasts
+                            </div>
+                        </li>
+                        <li>  
+                            <div id="msgdiv">
+                             <img src="msg1.png" id="msg1icon"> 
+                             &nbsp;&nbsp;Messages
+                            </div>
+                        </li>
+                        <li> 
+                           <div id="eventdiv">
+                           <img src="events1.png" id="eventicon"> 
+                           &nbsp;&nbsp;Events
+                           </div>
+                        </li>
+                        <li> 
+                           <div id="photodiv">
+                           <img src="gallery2.jpg" id="photoicon"> 
+                           &nbsp;&nbsp;Photos
+                           </div>
+                        </li>
+                        <li> 
+                           <div id="browsediv">
+                           <img src="yellow.jpg" id="browseicon"> 
+                           &nbsp;&nbsp;Browse
+                           </div>
+                        </li>
+                        <li> 
+                           <div id="grpdiv">
+                           <img src="grp.png" id="groupicon"> 
+                           &nbsp;&nbsp;Groups
+                           </div>
+                        </li>
+              </ul>  
+        </div>
+            <br>
+            <br><br><br><br><br>
+            
+            <img src="red.png" id="arrow">
+            
+        </div>
+        
+        <script>
+        window.onload = function(){ 
+	//Get submit button
+	var submitbutton = document.getElementById("srch");
+	//Add listener to submit button
+	if(submitbutton.addEventListener){
+		submitbutton.addEventListener("click", function() {
+			if (submitbutton.value == 'Search for people by name, email or phone number')
+                        {
+				submitbutton.value = '';
+			}
+		});
+	}
+        
+}
+            </script>
+    </body>
+</html>
